@@ -10,8 +10,9 @@
 		<class>main.java.model.Endereco</class>
 		<class>main.java.model.Entidade</class>
 		<class>main.java.model.Hospital</class>
-		<class>main.java.model.Historico</class>
+		<class>main.java.model.Medico</class>
 		<class>main.java.model.Paciente</class>
+		<class>main.java.model.PessoaFisica</class>
 		<class>main.java.model.Sintoma</class>
 		
 		<properties>

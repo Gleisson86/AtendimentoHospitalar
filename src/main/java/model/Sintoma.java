@@ -2,6 +2,8 @@ package main.java.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -12,6 +14,7 @@ public class Sintoma extends Entidade<Sintoma> {
 	private Integer frequencia;
 	private Integer intensidade;
 	private String local;
+	private Atendimento<?> atendimento;
 	
 	@Column(name="NOME", length=70)
 	public String getNome() {
@@ -22,7 +25,7 @@ public class Sintoma extends Entidade<Sintoma> {
 		this.nome = nome;
 	}
 	
-	//Opcional - Frequencia por segundo
+	//Opcional - Frequência por segundo
 	@Column(name="FREQUENCIA", length=3)
 	public Integer getFrequencia() {
 		return frequencia;
@@ -49,5 +52,15 @@ public class Sintoma extends Entidade<Sintoma> {
 	
 	public void setLocal(String local) {
 		this.local = local;
+	}
+
+	@ManyToOne
+	@JoinColumn( name = "ATENDIMENTO_ID" )
+	public Atendimento<?> getAtendimento() {
+		return atendimento;
+	}
+
+	public void setAtendimento(Atendimento<?> atendimento) {
+		this.atendimento = atendimento;
 	}
 }
