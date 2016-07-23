@@ -1,7 +1,10 @@
-package main.java.dao;
+package dao;
 
-import main.java.model.Cidade;
+import org.springframework.stereotype.Repository;
 
-public class CidadeDaoImpl extends EntidadeDaoImpl<Cidade> implements CidadeDao {
+import model.Cidade;
+
+@Repository("cidadeDao")
+class CidadeDaoImpl extends EntidadeDaoImpl<Cidade> implements CidadeDao {
 
 }

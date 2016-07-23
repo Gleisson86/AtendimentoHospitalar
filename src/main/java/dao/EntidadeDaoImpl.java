@@ -1,4 +1,4 @@
-package main.java.dao;
+package dao;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
@@ -7,12 +7,14 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import main.java.model.Entidade;
+import model.Entidade;
+import dao.EntidadeDao;
 
 public class EntidadeDaoImpl<E extends Entidade<E>> implements EntidadeDao<E> {
 
 	protected Class<E> entidadeClass;
 
+	@PersistenceContext(unitName="AtendimentoHospitalar")
 	private EntityManager entityManager;
 
 	@SuppressWarnings("unchecked")
@@ -31,43 +33,33 @@ public class EntidadeDaoImpl<E extends Entidade<E>> implements EntidadeDao<E> {
 		}
 	}
 
-	protected EntityManager getEntityManager() {
-		return this.entityManager;
-	}
-
-	@PersistenceContext(unitName = "mainPersistenceUnit")
-	protected void setEntityManager(EntityManager entityManager) {
-		this.entityManager = entityManager;
-	}
-
 	@Override
 	public E obterPorId(Long id) {
-		return getEntityManager().find(entidadeClass, id);
+		return entityManager.find(entidadeClass, id);
 	}
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public List<E> listar(int offset, int limit, String ordem,
-			String restricoes, Object... parametros) {
-		Query query = getEntityManager().createQuery("from "+entidadeClass.getSimpleName());
+	public List<E> listarTodos() {
+		Query query = entityManager.createQuery("from "+entidadeClass.getSimpleName());
 		return query.getResultList();
 	}
 
 	@Override
 	public E incluir(E entidade) {
-		getEntityManager().persist(entidade);
+		entityManager.persist(entidade);
 		return entidade;
 	}
 
 	@Override
 	public E alterar(E entidade) {
-		return getEntityManager().merge(entidade);
+		return entityManager.merge(entidade);
 	}
 
 	@Override
 	public E remover(E entidade) {
-		getEntityManager().flush();
-		getEntityManager().remove(obterPorId(entidade.getId()));
+		entityManager.flush();
+		entityManager.remove(obterPorId(entidade.getId()));
 		return entidade;
 	}
 

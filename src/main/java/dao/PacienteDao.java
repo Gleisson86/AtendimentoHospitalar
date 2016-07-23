@@ -1,6 +1,6 @@
-package main.java.dao;
+package dao;
 
-import main.java.model.Paciente;
+import model.Paciente;
 
 public interface PacienteDao extends EntidadeDao<Paciente> {
 

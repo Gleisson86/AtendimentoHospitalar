@@ -1,6 +1,6 @@
-package main.java.dao;
+package dao;
 
-import main.java.model.Hospital;
+import model.Hospital;
 
 public class HospitalDaoImpl extends EntidadeDaoImpl<Hospital> implements HospitalDao {
 

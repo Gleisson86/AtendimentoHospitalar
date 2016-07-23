@@ -1,6 +1,6 @@
-package main.java.dao;
+package dao;
 
-import main.java.model.Cidade;
+import model.Cidade;
 
 public interface AtendimentoDao extends EntidadeDao<Cidade> {
 

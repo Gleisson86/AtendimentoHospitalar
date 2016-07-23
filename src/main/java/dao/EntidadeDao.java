@@ -1,13 +1,13 @@
-package main.java.dao;
+package dao;
 
 import java.util.List;
 
-import main.java.model.Entidade;
+import model.Entidade;
 
 public interface EntidadeDao<E extends Entidade<E>> {
 
 	E obterPorId(Long id);
-	List<E> listar(int offset, int limit, String ordem, String restricoes, Object... parametros);
+	List<E> listarTodos();
 	
 	E incluir(E entidade);
 	E alterar(E entidade);
