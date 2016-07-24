@@ -1,7 +1,10 @@
 package dao;
 
+import org.springframework.stereotype.Repository;
+
 import model.Atendimento;
 
-abstract class AtendimentoDaoImpl<E extends Atendimento<E>> extends EntidadeDaoImpl<E> implements AtendimentoDao<E> {
+@Repository("atendimentoDao")
+class AtendimentoDaoImpl extends EntidadeDaoImpl<Atendimento> implements AtendimentoDao {
 
 }

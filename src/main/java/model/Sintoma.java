@@ -14,7 +14,7 @@ public class Sintoma extends Entidade<Sintoma> {
 	private Integer frequencia;
 	private Integer intensidade;
 	private String local;
-	private Atendimento<?> atendimento;
+	private Atendimento atendimento;
 	
 	@Column(name="NOME", length=70)
 	public String getNome() {
@@ -56,11 +56,11 @@ public class Sintoma extends Entidade<Sintoma> {
 
 	@ManyToOne
 	@JoinColumn( name = "ATENDIMENTO_ID" )
-	public Atendimento<?> getAtendimento() {
+	public Atendimento getAtendimento() {
 		return atendimento;
 	}
 
-	public void setAtendimento(Atendimento<?> atendimento) {
+	public void setAtendimento(Atendimento atendimento) {
 		this.atendimento = atendimento;
 	}
 }

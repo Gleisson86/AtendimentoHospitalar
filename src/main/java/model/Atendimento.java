@@ -6,12 +6,8 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -21,9 +17,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "ATENDIMENTO")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "TIPO", discriminatorType = DiscriminatorType.STRING, length = 30)
-public abstract class Atendimento<E extends Atendimento<E>> extends Entidade<E> {
+public class Atendimento extends Entidade<Atendimento> {
 
 	private Date horario;
 	private Hospital hospital;
@@ -31,7 +25,7 @@ public abstract class Atendimento<E extends Atendimento<E>> extends Entidade<E> 
 	private Medico medico;
 	private List<Sintoma> sintomas = new ArrayList<Sintoma>();
 	
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIME)
 	@Column(name="HORARIO")
 	public Date getHorario() {
 		return horario;

@@ -14,7 +14,7 @@ public class Hospital extends Entidade<Hospital> {
 
 	private PessoaJuridica pessoaJuridica;
 	private Endereco endereco = new Endereco();
-	private List<Atendimento<?>> atendimentos;
+	private List<Atendimento> atendimentos;
 	
 	public PessoaJuridica getPessoaJuridica() {
 		return pessoaJuridica == null ? new PessoaJuridica() : pessoaJuridica;
@@ -33,11 +33,11 @@ public class Hospital extends Entidade<Hospital> {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "hospital", cascade = CascadeType.REMOVE, targetEntity=Atendimento.class)
-	public List<Atendimento<?>> getAtendimentos() {
+	public List<Atendimento> getAtendimentos() {
 		return atendimentos;
 	}
 
-	public void setAtendimentos(List<Atendimento<?>> atendimentos) {
+	public void setAtendimentos(List<Atendimento> atendimentos) {
 		this.atendimentos = atendimentos;
 	}
 }
