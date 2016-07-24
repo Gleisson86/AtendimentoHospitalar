@@ -25,20 +25,20 @@ import javax.persistence.TemporalType;
 @DiscriminatorColumn(name = "TIPO", discriminatorType = DiscriminatorType.STRING, length = 30)
 public abstract class Atendimento<E extends Atendimento<E>> extends Entidade<E> {
 
-	private Date data;
+	private Date horario;
 	private Hospital hospital;
 	private Paciente paciente;
 	private Medico medico;
 	private List<Sintoma> sintomas = new ArrayList<Sintoma>();
 	
 	@Temporal(TemporalType.DATE)
-	@Column(name="DATA")
-	public Date getData() {
-		return data;
+	@Column(name="HORARIO")
+	public Date getHorario() {
+		return horario;
 	}
 
-	public void setData(Date data) {
-		this.data = data;
+	public void setHorario(Date horario) {
+		this.horario = horario;
 	}
 	
 	@ManyToOne

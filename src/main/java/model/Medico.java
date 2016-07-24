@@ -10,6 +10,7 @@ public class Medico extends Entidade<Medico> {
 
 	private PessoaFisica pessoaFisica;
 	private Integer crm;
+	private String especialidade;
 
 	public PessoaFisica getPessoaFisica() {
 		return pessoaFisica = pessoaFisica == null ? new PessoaFisica() : pessoaFisica;
@@ -26,5 +27,14 @@ public class Medico extends Entidade<Medico> {
 
 	public void setCrm(Integer crm) {
 		this.crm = crm;
+	}
+	
+	@Column(name="ESPECIALIDADE", length=70)
+	public String getEspecialidade() {
+		return especialidade;
+	}
+
+	public void setEspecialidade(String especialidade) {
+		this.especialidade = especialidade;
 	}
 }

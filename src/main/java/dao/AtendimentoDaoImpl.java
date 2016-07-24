@@ -1,7 +1,7 @@
 package dao;
 
-import model.Cidade;
+import model.Atendimento;
 
-public class AtendimentoDaoImpl extends EntidadeDaoImpl<Cidade> implements CidadeDao {
+abstract class AtendimentoDaoImpl<E extends Atendimento<E>> extends EntidadeDaoImpl<E> implements AtendimentoDao<E> {
 
 }

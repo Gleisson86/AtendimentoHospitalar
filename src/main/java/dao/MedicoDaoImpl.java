@@ -1,7 +1,10 @@
 package dao;
 
+import org.springframework.stereotype.Repository;
+
 import model.Medico;
 
-public class MedicoDaoImpl extends EntidadeDaoImpl<Medico> implements MedicoDao {
+@Repository("medicoDao")
+class MedicoDaoImpl extends EntidadeDaoImpl<Medico> implements MedicoDao {
 
 }

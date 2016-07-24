@@ -1,7 +1,7 @@
 package dao;
 
-import model.Cidade;
+import model.Atendimento;
 
-public interface AtendimentoDao extends EntidadeDao<Cidade> {
+public interface AtendimentoDao<E extends Atendimento<E>> extends EntidadeDao<E> {
 
 }
