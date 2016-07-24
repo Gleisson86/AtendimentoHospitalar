@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.StoredProcedureQuery;
 
 import model.Entidade;
 import dao.EntidadeDao;
@@ -31,6 +32,10 @@ public class EntidadeDaoImpl<E extends Entidade<E>> implements EntidadeDao<E> {
 		} catch (Exception e) {
 			entidadeClass = null;
 		}
+	}
+	
+	public EntityManager getEntityManager() {
+		return this.entityManager;
 	}
 
 	@Override
@@ -63,4 +68,9 @@ public class EntidadeDaoImpl<E extends Entidade<E>> implements EntidadeDao<E> {
 		return entidade;
 	}
 
+	@Override
+	public void limparBancoDados() {
+		StoredProcedureQuery storedProcedure = entityManager.createStoredProcedureQuery("limpar_banco");
+		storedProcedure.execute();
+	}
 }

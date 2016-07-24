@@ -12,8 +12,7 @@ import javax.persistence.Table;
 @Table( name = "HOSPITAL" )
 public class Hospital extends Entidade<Hospital> {
 
-	private PessoaJuridica pessoaJuridica;
-	private Endereco endereco = new Endereco();
+	private PessoaJuridica pessoaJuridica = new PessoaJuridica();
 	private List<Atendimento> atendimentos;
 	
 	public PessoaJuridica getPessoaJuridica() {
@@ -22,14 +21,6 @@ public class Hospital extends Entidade<Hospital> {
 
 	public void setPessoaJuridica(PessoaJuridica pessoaJuridica) {
 		this.pessoaJuridica = pessoaJuridica;
-	}
-
-	public Endereco getEndereco() {
-		return endereco = endereco == null ? new Endereco() : endereco;
-	}
-	
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "hospital", cascade = CascadeType.REMOVE, targetEntity=Atendimento.class)

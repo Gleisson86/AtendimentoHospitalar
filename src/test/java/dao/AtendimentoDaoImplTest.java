@@ -130,11 +130,6 @@ public class AtendimentoDaoImplTest {
 	private Atendimento preencherAtendimento(Hospital hospital,
 			Medico medico, Paciente paciente) {
 		
-		Sintoma sintoma = new Sintoma();
-		sintoma.setNome("FEBRE");
-		sintoma.setLocal("CABECA");
-		sintoma.setIntensidade(3);
-
 		Atendimento atend = new Atendimento();
 		Calendar calendar = new GregorianCalendar(2016, 6, 25, 19, 40);
 		atend.setHorario(calendar.getTime());
@@ -142,8 +137,27 @@ public class AtendimentoDaoImplTest {
 		atend.setMedico(medico);
 		atend.setPaciente(paciente);
 		
+		Sintoma sintoma = new Sintoma();
+		sintoma.setNome("FEBRE");
+		sintoma.setLocal("CABECA");
+		sintoma.setIntensidade(3);
 		sintoma.setAtendimento(atend);
+		
+		Sintoma sintoma1 = new Sintoma();
+		sintoma1.setNome("FEBRE");
+		sintoma1.setLocal("CABECA");
+		sintoma1.setIntensidade(3);
+		sintoma1.setAtendimento(atend);
+		
+		Sintoma sintoma2 = new Sintoma();
+		sintoma2.setNome("FALTA DE AR");
+		sintoma2.setLocal("PULMAO");
+		sintoma2.setIntensidade(3);
+		sintoma2.setAtendimento(atend);
+		
 		atend.getSintomas().add(sintoma);
+		atend.getSintomas().add(sintoma1);
+		atend.getSintomas().add(sintoma2);
 		return atend;
 	}
 }

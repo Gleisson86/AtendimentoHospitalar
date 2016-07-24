@@ -12,4 +12,6 @@ public interface EntidadeDao<E extends Entidade<E>> {
 	E incluir(E entidade);
 	E alterar(E entidade);
 	E remover(E entidade);
+	
+	void limparBancoDados();
 }

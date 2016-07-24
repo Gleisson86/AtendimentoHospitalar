@@ -2,12 +2,15 @@ package model;
 
 import java.util.Date;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Embeddable
+@Access(AccessType.PROPERTY)
 public class PessoaFisica extends Pessoa {
 	
 	private String cpf;

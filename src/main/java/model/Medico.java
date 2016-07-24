@@ -8,7 +8,7 @@ import javax.persistence.Table;
 @Table( name = "MEDICO" )
 public class Medico extends Entidade<Medico> {
 
-	private PessoaFisica pessoaFisica;
+	private PessoaFisica pessoaFisica = new PessoaFisica();
 	private Integer crm;
 	private String especialidade;
 
