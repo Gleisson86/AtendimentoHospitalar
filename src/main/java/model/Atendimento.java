@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "ATENDIMENTO")
@@ -27,6 +28,7 @@ public class Atendimento extends Entidade<Atendimento> {
 	
 	@Temporal(TemporalType.TIME)
 	@Column(name="HORARIO")
+	@NotNull
 	public Date getHorario() {
 		return horario;
 	}
@@ -37,6 +39,7 @@ public class Atendimento extends Entidade<Atendimento> {
 	
 	@ManyToOne
 	@JoinColumn( name = "HOSPITAL_ID" )
+	@NotNull
 	public Hospital getHospital() {
 		return hospital;
 	}
@@ -47,6 +50,7 @@ public class Atendimento extends Entidade<Atendimento> {
 
 	@ManyToOne
 	@JoinColumn( name = "PACIENTE_ID" )
+	@NotNull
 	public Paciente getPaciente() {
 		return paciente;
 	}
@@ -57,6 +61,7 @@ public class Atendimento extends Entidade<Atendimento> {
 	
 	@ManyToOne
 	@JoinColumn( name = "MEDICO_ID" )
+	@NotNull
 	public Medico getMedico() {
 		return medico;
 	}
