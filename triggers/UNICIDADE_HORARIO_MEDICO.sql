@@ -6,10 +6,10 @@ DECLARE
 BEGIN
   SELECT horario INTO horarios 
   FROM atendimento 
-  WHERE horario = :new.horario;
+  WHERE horario = :new.horario AND atendimento.medico_id = :new.medico_id;
     
   IF horarios IS NOT NULL THEN
-     RAISE_APPLICATION_ERROR(-20001, 'Hor·rio j· agendado');
+     RAISE_APPLICATION_ERROR(-20001, 'Hor√°rio j√° agendado');
   END IF;
   
   EXCEPTION
