@@ -55,7 +55,7 @@ public class AtendimentoDaoImplTest {
 		atendimentoDao.incluir(atend);
 		
 		Atendimento atend1 = preencherAtendimento(hospital, medico, paciente);
-		Calendar calendar = new GregorianCalendar(2016, 6, 25, 21, 40);
+		Calendar calendar = new GregorianCalendar(2016, 6, 25, 20, 40);
 		atend1.setHorario(calendar.getTime());
 		atendimentoDao.incluir(atend1);
 	}
@@ -71,9 +71,26 @@ public class AtendimentoDaoImplTest {
 		Paciente paciente = pacienteDao.listarTodos().get(0);
 		
 		Hospital hospital = hospitalDao.listarTodos().get(0);
-
 	
 		Atendimento atend = preencherAtendimento(hospital, medico, paciente);
+		atendimentoDao.incluir(atend);
+	}
+	
+	@Test
+	@Transactional
+	@Commit
+	//Trigger atend_fora_horario impede a inclusão do atendimento em horário após as 22:00 e antes das 6:00
+	//Devido ao erro ser no commit da transação não é possível recuperá-lo nesse método
+	public void test2() {
+		Medico medico = medicoDao.listarTodos().get(0);
+		
+		Paciente paciente = pacienteDao.listarTodos().get(0);
+		
+		Hospital hospital = hospitalDao.listarTodos().get(0);
+	
+		Atendimento atend = preencherAtendimento(hospital, medico, paciente);
+		Calendar calendar = new GregorianCalendar(2016, 6, 25, 22, 40);
+		atend.setHorario(calendar.getTime());
 		atendimentoDao.incluir(atend);
 	}
 
